@@ -1,0 +1,6 @@
+.nvmrc
+.gitignore
+.prettierignore
+iiif-url-*.tgz
+LICENSE
+yarn.lock
