@@ -1,0 +1,41 @@
+{
+  "name": "iiif-url",
+  "version": "3.0.0",
+  "description": "IIIF Image API URL Parsing",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "./dist/**/*.js",
+    "./dist/**/*.d.ts"
+  ],
+  "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "npm run build:ts && npm run test",
+    "build:ts": "tsc -p .",
+    "format": "npx prettier --loglevel warn --write \"**/*\"",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest"
+  },
+  "keywords": [
+    "iiif"
+  ],
+  "author": "Rich Douglas",
+  "license": "MIT",
+  "devDependencies": {
+    "@jest/globals": "^29.3.1",
+    "@types/jest": "^29.2.3",
+    "@types/node": "^18.11.9",
+    "cross-env": "^7.0.3",
+    "jest": "^29.3.1",
+    "prettier": "^2.8.0",
+    "ts-jest": "^29.0.3",
+    "typescript": "^4.9.3"
+  },
+  "jest": {
+    "preset": "./jest.preset.cjs"
+  }
+}
