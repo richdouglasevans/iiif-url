@@ -1,6 +1,6 @@
 # iiif-url
 
-> IIIF Image API URI Parser `2.1.1` for JS/TS
+> IIIF Image API URI Parser `3.0` for JS/TS
 
 ## Usage
 
@@ -96,10 +96,11 @@ const result = parseURI(
 
 The parse result will return one of three possible structures.
 
-| Structure | Tag |
-| [Image Request](https://iiif.io/api/image/2.1/#image-request-parameters) | `imageRequest` |
+| Structure                                                                     | Tag                       |
+| ----------------------------------------------------------------------------- | ------------------------- |
+| [Image Request](https://iiif.io/api/image/2.1/#image-request-parameters)      | `imageRequest`            |
 | [Image Information Request](https://iiif.io/api/image/2.1/#image-information) | `imageInformationRequest` |
-| Parse Error | `error` |
+| Parse Error                                                                   | `error`                   |
 
 The `tag` can be used to discriminate between them.
 
@@ -133,4 +134,4 @@ The **major** version number tracks the version of the IIIF Image API spec targe
 
 You're looking at the package targeting this version of the spec:
 
-- [Image API 2.1.1](https://iiif.io/api/image/2.1/)
+- [Image API 3.0](https://iiif.io/api/image/3.0/)
