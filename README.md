@@ -1,6 +1,6 @@
 # iiif-url
 
-> IIIF Image API URI Parser `3.0` for JS/TS
+> IIIF Image API URI Parser `2.1.1` for JS/TS
 
 ## Usage
 
@@ -134,4 +134,4 @@ The **major** version number tracks the version of the IIIF Image API spec targe
 
 You're looking at the package targeting this version of the spec:
 
-- [Image API 3.0](https://iiif.io/api/image/3.0/)
+- [Image API 2.1.1](https://iiif.io/api/image/2.1/)
