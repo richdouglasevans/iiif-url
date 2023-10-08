@@ -96,11 +96,11 @@ const result = parseURI(
 
 The parse result will return one of three possible structures.
 
-| Structure                                                                     | Tag                       |
-| ----------------------------------------------------------------------------- | ------------------------- |
-| [Image Request](https://iiif.io/api/image/2.1/#image-request-parameters)      | `imageRequest`            |
-| [Image Information Request](https://iiif.io/api/image/2.1/#image-information) | `imageInformationRequest` |
-| Parse Error                                                                   | `error`                   |
+| Structure                                                                       | Tag                       |
+| ------------------------------------------------------------------------------- | ------------------------- |
+| [Image Request](https://iiif.io/api/image/3.0/#4-image-requests)                | `imageRequest`            |
+| [Image Information Request](https://iiif.io/api/image/3.0/#5-image-information) | `imageInformationRequest` |
+| Parse Error                                                                     | `error`                   |
 
 The `tag` can be used to discriminate between them.
 
