@@ -7,7 +7,7 @@ import { parseFormat } from "./parseFormat.js";
 import { parseQuality } from "./parseQuality.js";
 
 export function parseQualityAndFormat(
-  data: string
+  data: string,
 ):
   | [ReturnType<typeof parseQuality>, ReturnType<typeof parseFormat>]
   | MalformedPath

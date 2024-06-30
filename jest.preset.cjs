@@ -1,4 +1,4 @@
-/** @type {import('ts-jest').InitialOptionsTsJest} */
+/** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
   extensionsToTreatAsEsm: [".ts"],
   moduleNameMapper: {

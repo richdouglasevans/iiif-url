@@ -14,7 +14,7 @@ export function parseSize(input: string): Size | BadSize {
   const parseInteger = parseNumber(
     (n) => parseInt(n, 10),
     input,
-    1 /* minimum */
+    1 /* minimum */,
   );
 
   const isScaled = input.startsWith("^");
@@ -26,7 +26,7 @@ export function parseSize(input: string): Size | BadSize {
     const percentage = parseNumber(
       parseFloat,
       data,
-      0 /* minimum */
+      0 /* minimum */,
     )(data.substring(4));
 
     if (isBadSize(percentage)) {
@@ -82,7 +82,7 @@ export function parseSize(input: string): Size | BadSize {
 
     const result = parseTwoNumbers(
       parseInteger,
-      data.substring(1) /* strip off the leading ! */
+      data.substring(1) /* strip off the leading ! */,
     );
 
     if (isBadSize(result)) {
@@ -140,7 +140,7 @@ export function parseSize(input: string): Size | BadSize {
 function parseNumber(
   parse: (data: string) => number,
   data: string,
-  minimum: number
+  minimum: number,
 ): (input: string) => number | BadSize {
   return (input) => {
     const n = parse(input);
@@ -166,7 +166,7 @@ function parseNumber(
 
 function parseTwoNumbers(
   parse: (input: string) => number | BadSize,
-  data: string
+  data: string,
 ): BadSize | [x: number, y: number] {
   const ns = data.split(",");
   if (ns.length != 2) {

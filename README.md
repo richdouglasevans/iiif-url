@@ -16,7 +16,7 @@ npm install iiif-url
 import { parseURI } from "iiif-url";
 
 const result = parseURI(
-  "https://iiif.bodleian.ox.ac.uk/iiif/image/f27e28db-0b08-4f16-9bdf-3565f591fb71/full/256,/0/default.jpg"
+  "https://iiif.bodleian.ox.ac.uk/iiif/image/f27e28db-0b08-4f16-9bdf-3565f591fb71/full/256,/0/default.jpg",
 );
 ```
 
@@ -52,7 +52,7 @@ const result = parseURI(
 import { parseURI } from "iiif-url";
 
 const result = parseURI(
-  "https://iiif.bodleian.ox.ac.uk/iiif/image/f27e28db-0b08-4f16-9bdf-3565f591fb71/info.json"
+  "https://iiif.bodleian.ox.ac.uk/iiif/image/f27e28db-0b08-4f16-9bdf-3565f591fb71/info.json",
 );
 ```
 
@@ -75,7 +75,7 @@ const result = parseURI(
 import { parseURI } from "iiif-url";
 
 const result = parseURI(
-  "https://iiif.bodleian.ox.ac.uk/iiif/image/f27e28db-0b08-4f16-9bdf-3565f591fb71/bingo/256,/0/default.jpg"
+  "https://iiif.bodleian.ox.ac.uk/iiif/image/f27e28db-0b08-4f16-9bdf-3565f591fb71/bingo/256,/0/default.jpg",
 );
 ```
 
@@ -108,7 +108,7 @@ The `tag` can be used to discriminate between them.
 import { parseURI } from "iiif-url";
 
 const result = parseURI(
-  "https://iiif.bodleian.ox.ac.uk/iiif/image/f27e28db-0b08-4f16-9bdf-3565f591fb71/full/256,/0/default.jpg"
+  "https://iiif.bodleian.ox.ac.uk/iiif/image/f27e28db-0b08-4f16-9bdf-3565f591fb71/full/256,/0/default.jpg",
 );
 
 switch (result.tag) {

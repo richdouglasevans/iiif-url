@@ -6,7 +6,7 @@ import type {
 } from "./index.js";
 
 export function toURI(
-  request: ParsedImageRequest | ParsedImageInformationRequest
+  request: ParsedImageRequest | ParsedImageInformationRequest,
 ): URL {
   switch (request.tag) {
     case "imageRequest":
@@ -21,7 +21,7 @@ export function toURI(
 }
 
 function toImageInformationRequestURI(
-  request: ParsedImageInformationRequest
+  request: ParsedImageInformationRequest,
 ): URL {
   return new URL(`${toPath(request)}/info.json`, toBase(request));
 }
@@ -35,7 +35,7 @@ function toImageRequestURI(request: ParsedImageRequest): URL {
     `${toPath(request)}/${region}/${size}/${rotation}/${request.quality}.${
       request.format
     }`,
-    toBase(request)
+    toBase(request),
   );
 }
 
@@ -97,7 +97,7 @@ function serializeRotation(rotation: Rotation): string {
 }
 
 function toBase(
-  request: ParsedImageRequest | ParsedImageInformationRequest
+  request: ParsedImageRequest | ParsedImageInformationRequest,
 ): URL {
   const server = request.server.port
     ? `${request.server.host}:${request.server.port}`
@@ -107,7 +107,7 @@ function toBase(
 }
 
 function toPath(
-  request: ParsedImageRequest | ParsedImageInformationRequest
+  request: ParsedImageRequest | ParsedImageInformationRequest,
 ): string {
   return request.prefix
     ? `${request.prefix}/${encodeURIComponent(request.identifier)}`

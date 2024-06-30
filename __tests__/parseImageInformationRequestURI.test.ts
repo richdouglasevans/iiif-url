@@ -27,7 +27,7 @@ describe("parse Image Information Request URI", () => {
 
     test("with explicit port", () => {
       const result = parseURI(
-        "https://example.org:80/image-service/abcd1234/info.json"
+        "https://example.org:80/image-service/abcd1234/info.json",
       );
 
       expect(result).toMatchObject({
@@ -61,7 +61,7 @@ describe("parse Image Information Request URI", () => {
 
     test("with two-section prefix", () => {
       const result = parseURI(
-        "https://example.org/image-service/iiif/abcd1234/info.json"
+        "https://example.org/image-service/iiif/abcd1234/info.json",
       );
 
       expect(result).toMatchObject({
@@ -79,7 +79,7 @@ describe("parse Image Information Request URI", () => {
 
     test("with encoded identifier", () => {
       const result = parseURI(
-        "https://example.org/image-service/ark%3A%2F53355%2Fcl010066723/info.json"
+        "https://example.org/image-service/ark%3A%2F53355%2Fcl010066723/info.json",
       );
 
       expect(result).toMatchObject({
@@ -97,7 +97,7 @@ describe("parse Image Information Request URI", () => {
 
     test("superfluous query parameters are (silently) discarded", () => {
       const result = parseURI(
-        "https://example.org/image-service/abcd1234/info.json?name=foo&age=24"
+        "https://example.org/image-service/abcd1234/info.json?name=foo&age=24",
       );
 
       expect(result).toMatchObject({
@@ -184,7 +184,7 @@ describe("parse Image Information Request URI", () => {
 
       test("bad port 'FOO'", () => {
         const result = parseURI(
-          "https://example.org:FOO/image-service/info.json"
+          "https://example.org:FOO/image-service/info.json",
         );
 
         expect(result).toMatchObject({
@@ -200,7 +200,7 @@ describe("parse Image Information Request URI", () => {
 
       test("bad port '-1'", () => {
         const result = parseURI(
-          "https://example.org:-1/image-service/info.json"
+          "https://example.org:-1/image-service/info.json",
         );
 
         expect(result).toMatchObject({
@@ -216,7 +216,7 @@ describe("parse Image Information Request URI", () => {
 
       test("bad port '65536'", () => {
         const result = parseURI(
-          "https://example.org:65536/image-service/info.json"
+          "https://example.org:65536/image-service/info.json",
         );
 
         expect(result).toMatchObject({
@@ -232,7 +232,7 @@ describe("parse Image Information Request URI", () => {
 
       test("bad port '33.5'", () => {
         const result = parseURI(
-          "https://example.org:33.5/image-service/info.json"
+          "https://example.org:33.5/image-service/info.json",
         );
 
         expect(result).toMatchObject({
