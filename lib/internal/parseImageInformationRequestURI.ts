@@ -19,7 +19,7 @@ import { toURI } from "./toURI.js";
  * @param url *must* end in `info.json`
  */
 export function parseImageInformationRequestURI(
-  url: URL
+  url: URL,
 ): ImageInformationRequest | ParseError {
   const server = parseServer(url.hostname, url.port);
 

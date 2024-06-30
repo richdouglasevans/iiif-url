@@ -6,7 +6,7 @@ describe("parse Image Request URI", () => {
   describe("sunny day", () => {
     test("vanilla URI", () => {
       const result = parseURI(
-        "https://example.org/image-service/abcd1234/full/max/0/default.jpg"
+        "https://example.org/image-service/abcd1234/full/max/0/default.jpg",
       );
 
       expect(result).toMatchObject({
@@ -36,7 +36,7 @@ describe("parse Image Request URI", () => {
 
     test("with explicit port", () => {
       const result = parseURI(
-        "https://example.org:8080/image-service/abcd1234/full/max/0/default.jpg"
+        "https://example.org:8080/image-service/abcd1234/full/max/0/default.jpg",
       );
 
       expect(result).toMatchObject({
@@ -66,7 +66,7 @@ describe("parse Image Request URI", () => {
 
     test("with two-section prefix", () => {
       const result = parseURI(
-        "https://example.org/image-service/iiif/abcd1234/full/max/0/default.jpg"
+        "https://example.org/image-service/iiif/abcd1234/full/max/0/default.jpg",
       );
 
       expect(result).toMatchObject({
@@ -96,7 +96,7 @@ describe("parse Image Request URI", () => {
 
     test("with no prefix; prefix is optional", () => {
       const result = parseURI(
-        "https://example.org/abcd1234/full/max/0/default.jpg"
+        "https://example.org/abcd1234/full/max/0/default.jpg",
       );
 
       expect(result).toMatchObject({
@@ -127,7 +127,7 @@ describe("parse Image Request URI", () => {
     describe("region", () => {
       test("full", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/full/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/full/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -157,7 +157,7 @@ describe("parse Image Request URI", () => {
 
       test("square", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/square/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/square/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -187,7 +187,7 @@ describe("parse Image Request URI", () => {
 
       test("pixels", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/1,3,22,44/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/1,3,22,44/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -220,7 +220,7 @@ describe("parse Image Request URI", () => {
 
       test("percentages", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/pct:0.1,12,33.3,45/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/pct:0.1,12,33.3,45/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -255,7 +255,7 @@ describe("parse Image Request URI", () => {
     describe("size", () => {
       test("full", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/full/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/full/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -288,7 +288,7 @@ describe("parse Image Request URI", () => {
 
       test("max", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -321,7 +321,7 @@ describe("parse Image Request URI", () => {
 
       test("percentage", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:44.5/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:44.5/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -355,7 +355,7 @@ describe("parse Image Request URI", () => {
 
       test("just width", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/72,/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/72,/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -389,7 +389,7 @@ describe("parse Image Request URI", () => {
 
       test("just height", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,283/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,283/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -423,7 +423,7 @@ describe("parse Image Request URI", () => {
 
       test("width and height", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/145,283/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/145,283/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -458,7 +458,7 @@ describe("parse Image Request URI", () => {
 
       test("constrained", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!12,34/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!12,34/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -498,7 +498,7 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/abcd1234/full/max/%s/default.jpg",
           (degrees) => {
             const result = parseURI(
-              `https://example.org/image-service/abcd1234/full/max/${degrees}/default.jpg`
+              `https://example.org/image-service/abcd1234/full/max/${degrees}/default.jpg`,
             );
 
             expect(result).toMatchObject({
@@ -523,7 +523,7 @@ describe("parse Image Request URI", () => {
               quality: "default",
               format: "jpg",
             });
-          }
+          },
         );
       });
 
@@ -532,7 +532,7 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/abcd1234/full/max/%s/default.jpg",
           (degrees) => {
             const result = parseURI(
-              `https://example.org/image-service/abcd1234/full/max/!${degrees}/default.jpg`
+              `https://example.org/image-service/abcd1234/full/max/!${degrees}/default.jpg`,
             );
 
             expect(result).toMatchObject({
@@ -557,7 +557,7 @@ describe("parse Image Request URI", () => {
               quality: "default",
               format: "jpg",
             });
-          }
+          },
         );
       });
     });
@@ -567,7 +567,7 @@ describe("parse Image Request URI", () => {
         "https://example.org/image-service/abcd1234/full/max/0/%s.jpg",
         (quality) => {
           const result = parseURI(
-            `https://example.org/image-service/abcd1234/full/max/0/${quality}.jpg`
+            `https://example.org/image-service/abcd1234/full/max/0/${quality}.jpg`,
           );
 
           expect(result).toMatchObject({
@@ -592,7 +592,7 @@ describe("parse Image Request URI", () => {
             quality,
             format: "jpg",
           });
-        }
+        },
       );
     });
 
@@ -601,7 +601,7 @@ describe("parse Image Request URI", () => {
         "https://example.org/image-service/abcd1234/full/max/0/default.%s",
         (format) => {
           const result = parseURI(
-            `https://example.org/image-service/abcd1234/full/max/0/default.${format}`
+            `https://example.org/image-service/abcd1234/full/max/0/default.${format}`,
           );
 
           expect(result).toMatchObject({
@@ -626,7 +626,7 @@ describe("parse Image Request URI", () => {
             quality: "default",
             format,
           });
-        }
+        },
       );
     });
   });
@@ -649,7 +649,7 @@ describe("parse Image Request URI", () => {
 
     test("unsupported scheme", () => {
       const result = parseURI(
-        "ftp://example.org/image-service/123abc/full/max/0/default.jpg"
+        "ftp://example.org/image-service/123abc/full/max/0/default.jpg",
       );
 
       expect(result).toMatchObject({
@@ -668,7 +668,7 @@ describe("parse Image Request URI", () => {
     describe("malformed URI", () => {
       test("missing scheme", () => {
         const result = parseURI(
-          "://example.org/image-service/123abc/full/max/0/default.jpg"
+          "://example.org/image-service/123abc/full/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -685,7 +685,7 @@ describe("parse Image Request URI", () => {
 
       test("bad port 'FOO'", () => {
         const result = parseURI(
-          "https://example.org:FOO/image-service/123abc/full/max/0/default.jpg"
+          "https://example.org:FOO/image-service/123abc/full/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -702,7 +702,7 @@ describe("parse Image Request URI", () => {
 
       test("bad port '-1'", () => {
         const result = parseURI(
-          "https://example.org:-1/image-service/123abc/full/max/0/default.jpg"
+          "https://example.org:-1/image-service/123abc/full/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -719,7 +719,7 @@ describe("parse Image Request URI", () => {
 
       test("bad port '65536'", () => {
         const result = parseURI(
-          "https://example.org:65536/image-service/123abc/full/max/0/default.jpg"
+          "https://example.org:65536/image-service/123abc/full/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -736,7 +736,7 @@ describe("parse Image Request URI", () => {
 
       test("bad port '33.5'", () => {
         const result = parseURI(
-          "https://example.org:33.5/image-service/123abc/full/max/0/default.jpg"
+          "https://example.org:33.5/image-service/123abc/full/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -754,7 +754,7 @@ describe("parse Image Request URI", () => {
 
     test("missing region", () => {
       const result = parseURI(
-        "https://example.org/image-service/abcd1234/max/0/default.jpg"
+        "https://example.org/image-service/abcd1234/max/0/default.jpg",
       );
 
       expect(result).toMatchObject({
@@ -770,7 +770,7 @@ describe("parse Image Request URI", () => {
 
     test("missing size", () => {
       const result = parseURI(
-        "https://example.org/image-service/abcd1234/full/0/default.jpg"
+        "https://example.org/image-service/abcd1234/full/0/default.jpg",
       );
 
       expect(result).toMatchObject({
@@ -786,7 +786,7 @@ describe("parse Image Request URI", () => {
 
     test("missing rotation", () => {
       const result = parseURI(
-        "https://example.org/image-service/abcd1234/full/max/default.jpg"
+        "https://example.org/image-service/abcd1234/full/max/default.jpg",
       );
 
       expect(result).toMatchObject({
@@ -803,7 +803,7 @@ describe("parse Image Request URI", () => {
 
     test("missing quality", () => {
       const result = parseURI(
-        "https://example.org/image-service/abcd1234/full/max/0/.jpg"
+        "https://example.org/image-service/abcd1234/full/max/0/.jpg",
       );
 
       expect(result).toMatchObject({
@@ -819,7 +819,7 @@ describe("parse Image Request URI", () => {
 
     test("missing format: no extension, just the period", () => {
       const result = parseURI(
-        "https://example.org/image-service/abcd1234/full/max/0/default."
+        "https://example.org/image-service/abcd1234/full/max/0/default.",
       );
 
       expect(result).toMatchObject({
@@ -835,7 +835,7 @@ describe("parse Image Request URI", () => {
 
     test("malformed format: multiple extensions", () => {
       const result = parseURI(
-        "https://example.org/image-service/abcd1234/full/max/0/default.jpg.png"
+        "https://example.org/image-service/abcd1234/full/max/0/default.jpg.png",
       );
 
       expect(result).toMatchObject({
@@ -851,7 +851,7 @@ describe("parse Image Request URI", () => {
 
     test("missing format/quality: no extension or period", () => {
       const result = parseURI(
-        "https://example.org/image-service/abcd1234/full/max/0/default"
+        "https://example.org/image-service/abcd1234/full/max/0/default",
       );
 
       expect(result).toMatchObject({
@@ -868,7 +868,7 @@ describe("parse Image Request URI", () => {
     describe("region", () => {
       test("negative x-value for pixels", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/-1,3,22,44/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/-1,3,22,44/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -884,7 +884,7 @@ describe("parse Image Request URI", () => {
 
       test("negative y-value for pixels", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/1,-3,22,44/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/1,-3,22,44/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -900,7 +900,7 @@ describe("parse Image Request URI", () => {
 
       test("negative w-value for pixels", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/1,3,-22,44/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/1,3,-22,44/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -916,7 +916,7 @@ describe("parse Image Request URI", () => {
 
       test("negative h-value for pixels", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/1,3,22,-44/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/1,3,22,-44/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -932,7 +932,7 @@ describe("parse Image Request URI", () => {
 
       test("no values out of the required 4", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234//max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234//max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -948,7 +948,7 @@ describe("parse Image Request URI", () => {
 
       test("no values (just commas) out of the required 4", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/,,,/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/,,,/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -964,7 +964,7 @@ describe("parse Image Request URI", () => {
 
       test("only 1 value out of the required 4", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/1/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/1/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -980,7 +980,7 @@ describe("parse Image Request URI", () => {
 
       test("only 2 values out of the required 4", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/1,2/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/1,2/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -996,7 +996,7 @@ describe("parse Image Request URI", () => {
 
       test("only 3 values out of the required 4", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/1,2,3/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/1,2,3/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1012,7 +1012,7 @@ describe("parse Image Request URI", () => {
 
       test("all values present but with extra leading comma", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/,1,2,3,4/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/,1,2,3,4/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1028,7 +1028,7 @@ describe("parse Image Request URI", () => {
 
       test("all values present but with extra trailing comma", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/1,2,3,4,/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/1,2,3,4,/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1044,7 +1044,7 @@ describe("parse Image Request URI", () => {
 
       test("all values present but with extra commas", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/,1,2,3,4,/max/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/,1,2,3,4,/max/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1062,7 +1062,7 @@ describe("parse Image Request URI", () => {
     describe("size", () => {
       test("missing", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3//0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3//0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1078,7 +1078,7 @@ describe("parse Image Request URI", () => {
 
       test("missing, just commas", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,,,/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,,,/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1094,7 +1094,7 @@ describe("parse Image Request URI", () => {
 
       test("percentage: <missing>", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1110,7 +1110,7 @@ describe("parse Image Request URI", () => {
 
       test("percentage <missing> (no colon)", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1126,7 +1126,7 @@ describe("parse Image Request URI", () => {
 
       test("percentage negative", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:-1/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:-1/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1142,7 +1142,7 @@ describe("parse Image Request URI", () => {
 
       test("percentage NaN", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:hello/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:hello/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1159,7 +1159,7 @@ describe("parse Image Request URI", () => {
 
       test("bad size, too many values", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/1,1,1/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/1,1,1/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1176,7 +1176,7 @@ describe("parse Image Request URI", () => {
 
       test("just width 0", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/0,/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/0,/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1192,7 +1192,7 @@ describe("parse Image Request URI", () => {
 
       test("just width -1", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/-1,/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/-1,/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1208,7 +1208,7 @@ describe("parse Image Request URI", () => {
 
       test("just width NaN", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/bingo,/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/bingo,/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1226,7 +1226,7 @@ describe("parse Image Request URI", () => {
 
       test("just height 0", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,0/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,0/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1242,7 +1242,7 @@ describe("parse Image Request URI", () => {
 
       test("just height -1", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,-1/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,-1/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1258,7 +1258,7 @@ describe("parse Image Request URI", () => {
 
       test("just height NaN", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,bingo/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,bingo/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1275,7 +1275,7 @@ describe("parse Image Request URI", () => {
 
       test("width and height, negative width", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/-145,283/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/-145,283/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1291,7 +1291,7 @@ describe("parse Image Request URI", () => {
 
       test("width and height, negative height", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/145,-283/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/145,-283/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1307,7 +1307,7 @@ describe("parse Image Request URI", () => {
 
       test("width and height, negative width and height", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/-145,-283/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/-145,-283/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1323,7 +1323,7 @@ describe("parse Image Request URI", () => {
 
       test("width and height, 0 width", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/0,283/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/0,283/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1339,7 +1339,7 @@ describe("parse Image Request URI", () => {
 
       test("width and height, 0 height", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/12,0/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/12,0/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1355,7 +1355,7 @@ describe("parse Image Request URI", () => {
 
       test("width and height, both 0", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/0,0/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/0,0/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1371,7 +1371,7 @@ describe("parse Image Request URI", () => {
 
       test("width and height, width NaN", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/bingo,283/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/bingo,283/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1389,7 +1389,7 @@ describe("parse Image Request URI", () => {
 
       test("width and height, height NaN", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/12,bingo/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/12,bingo/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1406,7 +1406,7 @@ describe("parse Image Request URI", () => {
 
       test("width and height, both NaN", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/bin,go/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/bin,go/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1423,7 +1423,7 @@ describe("parse Image Request URI", () => {
 
       test("unsupported size", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/unsupported/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/unsupported/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1440,7 +1440,7 @@ describe("parse Image Request URI", () => {
 
       test("constrained, missing completely", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1457,7 +1457,7 @@ describe("parse Image Request URI", () => {
 
       test("constrained, missing any values", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!,/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!,/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1474,7 +1474,7 @@ describe("parse Image Request URI", () => {
 
       test("constrained, too many values", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!1,1,1,1/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!1,1,1,1/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1491,7 +1491,7 @@ describe("parse Image Request URI", () => {
 
       test("constrained, negative", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!-1/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!-1/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1508,7 +1508,7 @@ describe("parse Image Request URI", () => {
 
       test("constrained, 0", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!0/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!0/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1525,7 +1525,7 @@ describe("parse Image Request URI", () => {
 
       test("constrained, NaN", () => {
         const result = parseURI(
-          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!bingo/0/default.jpg"
+          "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!bingo/0/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1544,7 +1544,7 @@ describe("parse Image Request URI", () => {
     describe("rotation", () => {
       test("clockwise, missing", () => {
         const result = parseURI(
-          "https://example.org/image-service/abcd1234/full/max//default.jpg"
+          "https://example.org/image-service/abcd1234/full/max//default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1560,7 +1560,7 @@ describe("parse Image Request URI", () => {
 
       test("clockwise, negative", () => {
         const result = parseURI(
-          "https://example.org/image-service/abcd1234/full/max/-1/default.jpg"
+          "https://example.org/image-service/abcd1234/full/max/-1/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1577,7 +1577,7 @@ describe("parse Image Request URI", () => {
 
       test("clockwise, 361 (too large)", () => {
         const result = parseURI(
-          "https://example.org/image-service/abcd1234/full/max/361/default.jpg"
+          "https://example.org/image-service/abcd1234/full/max/361/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1594,7 +1594,7 @@ describe("parse Image Request URI", () => {
 
       test("clockwise, 360.00001 (too large)", () => {
         const result = parseURI(
-          "https://example.org/image-service/abcd1234/full/max/360.00001/default.jpg"
+          "https://example.org/image-service/abcd1234/full/max/360.00001/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1611,7 +1611,7 @@ describe("parse Image Request URI", () => {
 
       test("clockwise, NaN", () => {
         const result = parseURI(
-          "https://example.org/image-service/abcd1234/full/max/bingo/default.jpg"
+          "https://example.org/image-service/abcd1234/full/max/bingo/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1627,7 +1627,7 @@ describe("parse Image Request URI", () => {
 
       test("mirrored, missing", () => {
         const result = parseURI(
-          "https://example.org/image-service/abcd1234/full/max/!/default.jpg"
+          "https://example.org/image-service/abcd1234/full/max/!/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1643,7 +1643,7 @@ describe("parse Image Request URI", () => {
 
       test("mirrored, negative", () => {
         const result = parseURI(
-          "https://example.org/image-service/abcd1234/full/max/!-1/default.jpg"
+          "https://example.org/image-service/abcd1234/full/max/!-1/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1659,7 +1659,7 @@ describe("parse Image Request URI", () => {
 
       test("mirrored, 361 (too large)", () => {
         const result = parseURI(
-          "https://example.org/image-service/abcd1234/full/max/!361/default.jpg"
+          "https://example.org/image-service/abcd1234/full/max/!361/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1675,7 +1675,7 @@ describe("parse Image Request URI", () => {
 
       test("mirrored, 360.00001 (too large)", () => {
         const result = parseURI(
-          "https://example.org/image-service/abcd1234/full/max/!360.00001/default.jpg"
+          "https://example.org/image-service/abcd1234/full/max/!360.00001/default.jpg",
         );
 
         expect(result).toMatchObject({
@@ -1691,7 +1691,7 @@ describe("parse Image Request URI", () => {
 
       test("mirrored, NaN", () => {
         const result = parseURI(
-          "https://example.org/image-service/abcd1234/full/max/!bingo/default.jpg"
+          "https://example.org/image-service/abcd1234/full/max/!bingo/default.jpg",
         );
 
         expect(result).toMatchObject({
