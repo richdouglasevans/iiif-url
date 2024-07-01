@@ -14,7 +14,7 @@ import {
 import { toURI } from "./toURI.js";
 
 /**
- * Parse a IIIF Image Informatio Request URI.
+ * Parse a IIIF Image Information Request URI.
  *
  * @param url *must* end in `info.json`
  */
