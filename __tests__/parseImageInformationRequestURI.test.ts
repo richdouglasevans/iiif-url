@@ -1,20 +1,72 @@
-import { describe, expect, test } from "@jest/globals";
+import assert from "assert/strict";
+import { describe, test } from "node:test";
 
 import { parseURI } from "../lib/index.js";
 
 describe("parse Image Information Request URI", () => {
   describe("sunny day", () => {
-    test.each([
-      "https://example.org/image-service/abcd1234/info.json",
-      "    https://example.org/image-service/abcd1234/info.json",
-      "https://example.org/image-service/abcd1234/info.json    ",
-      "   https://example.org/image-service/abcd1234/info.json          ",
-    ])("vanilla URI", (uri) => {
-      const result = parseURI(uri);
+    test("https://example.org/image-service/abcd1234/info.json", () => {
+      const result = parseURI(
+        "https://example.org/image-service/abcd1234/info.json",
+      );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "imageInformationRequest",
-        uri: uri.trim(),
+        uri: "https://example.org/image-service/abcd1234/info.json",
+        scheme: "https",
+        server: {
+          host: "example.org",
+          port: undefined,
+        },
+        prefix: "/image-service",
+        identifier: "abcd1234",
+      });
+    });
+
+    test("    https://example.org/image-service/abcd1234/info.json", () => {
+      const result = parseURI(
+        "    https://example.org/image-service/abcd1234/info.json",
+      );
+
+      assert.deepStrictEqual(result, {
+        tag: "imageInformationRequest",
+        uri: "https://example.org/image-service/abcd1234/info.json",
+        scheme: "https",
+        server: {
+          host: "example.org",
+          port: undefined,
+        },
+        prefix: "/image-service",
+        identifier: "abcd1234",
+      });
+    });
+
+    test("https://example.org/image-service/abcd1234/info.json    ", () => {
+      const result = parseURI(
+        "https://example.org/image-service/abcd1234/info.json    ",
+      );
+
+      assert.deepStrictEqual(result, {
+        tag: "imageInformationRequest",
+        uri: "https://example.org/image-service/abcd1234/info.json",
+        scheme: "https",
+        server: {
+          host: "example.org",
+          port: undefined,
+        },
+        prefix: "/image-service",
+        identifier: "abcd1234",
+      });
+    });
+
+    test("   https://example.org/image-service/abcd1234/info.json          ", () => {
+      const result = parseURI(
+        "   https://example.org/image-service/abcd1234/info.json          ",
+      );
+
+      assert.deepStrictEqual(result, {
+        tag: "imageInformationRequest",
+        uri: "https://example.org/image-service/abcd1234/info.json",
         scheme: "https",
         server: {
           host: "example.org",
@@ -30,7 +82,7 @@ describe("parse Image Information Request URI", () => {
         "https://example.org:80/image-service/abcd1234/info.json",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "imageInformationRequest",
         uri: "https://example.org:80/image-service/abcd1234/info.json",
         scheme: "https",
@@ -46,7 +98,7 @@ describe("parse Image Information Request URI", () => {
     test("with no prefix; prefix is optional", () => {
       const result = parseURI("https://example.org/abcd1234/info.json");
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "imageInformationRequest",
         uri: "https://example.org/abcd1234/info.json",
         scheme: "https",
@@ -64,7 +116,7 @@ describe("parse Image Information Request URI", () => {
         "https://example.org/image-service/iiif/abcd1234/info.json",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "imageInformationRequest",
         uri: "https://example.org/image-service/iiif/abcd1234/info.json",
         scheme: "https",
@@ -82,7 +134,7 @@ describe("parse Image Information Request URI", () => {
         "https://example.org/image-service/ark%3A%2F53355%2Fcl010066723/info.json",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "imageInformationRequest",
         uri: "https://example.org/image-service/ark%3A%2F53355%2Fcl010066723/info.json",
         scheme: "https",
@@ -100,7 +152,7 @@ describe("parse Image Information Request URI", () => {
         "https://example.org/image-service/abcd1234/info.json?name=foo&age=24",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "imageInformationRequest",
         uri: "https://example.org/image-service/abcd1234/info.json",
         scheme: "https",
@@ -118,13 +170,14 @@ describe("parse Image Information Request URI", () => {
     test("missing identifier", () => {
       const result = parseURI("https://example.org/info.json");
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "error",
         uri: "https://example.org/info.json",
         errors: [
           {
             tag: "malformedPath",
             value: "/info.json",
+            message: "Missing <prefix>/identifier",
           },
         ],
       });
@@ -133,7 +186,7 @@ describe("parse Image Information Request URI", () => {
     test("unsupported scheme", () => {
       const result = parseURI("ftp://example.org/abcd1234/info.json");
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "error",
         uri: "ftp://example.org/abcd1234/info.json",
         errors: [
@@ -149,7 +202,7 @@ describe("parse Image Information Request URI", () => {
     test("unsupported scheme and missing identifier", () => {
       const result = parseURI("ftp://example.org/info.json");
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "error",
         uri: "ftp://example.org/info.json",
         errors: [
@@ -171,8 +224,9 @@ describe("parse Image Information Request URI", () => {
       test("missing scheme", () => {
         const result = parseURI("://example.org/image-service/info.json");
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "://example.org/image-service/info.json",
           errors: [
             {
               tag: "malformedURI",
@@ -187,8 +241,9 @@ describe("parse Image Information Request URI", () => {
           "https://example.org:FOO/image-service/info.json",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org:FOO/image-service/info.json",
           errors: [
             {
               tag: "malformedURI",
@@ -203,8 +258,9 @@ describe("parse Image Information Request URI", () => {
           "https://example.org:-1/image-service/info.json",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org:-1/image-service/info.json",
           errors: [
             {
               tag: "malformedURI",
@@ -219,8 +275,9 @@ describe("parse Image Information Request URI", () => {
           "https://example.org:65536/image-service/info.json",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org:65536/image-service/info.json",
           errors: [
             {
               tag: "malformedURI",
@@ -235,8 +292,9 @@ describe("parse Image Information Request URI", () => {
           "https://example.org:33.5/image-service/info.json",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org:33.5/image-service/info.json",
           errors: [
             {
               tag: "malformedURI",

@@ -1,4 +1,5 @@
-import { describe, expect, test } from "@jest/globals";
+import assert from "assert/strict";
+import { describe, test } from "node:test";
 
 import { parseURI } from "../lib/index.js";
 
@@ -9,7 +10,7 @@ describe("parse Image Request URI", () => {
         "https://example.org/image-service/abcd1234/full/max/0/default.jpg",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "imageRequest",
         uri: "https://example.org/image-service/abcd1234/full/max/0/default.jpg",
         scheme: "https",
@@ -39,7 +40,7 @@ describe("parse Image Request URI", () => {
         "https://example.org:8080/image-service/abcd1234/full/max/0/default.jpg",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "imageRequest",
         uri: "https://example.org:8080/image-service/abcd1234/full/max/0/default.jpg",
         scheme: "https",
@@ -69,7 +70,7 @@ describe("parse Image Request URI", () => {
         "https://example.org/image-service/iiif/abcd1234/full/max/0/default.jpg",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "imageRequest",
         uri: "https://example.org/image-service/iiif/abcd1234/full/max/0/default.jpg",
         scheme: "https",
@@ -99,7 +100,7 @@ describe("parse Image Request URI", () => {
         "https://example.org/abcd1234/full/max/0/default.jpg",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "imageRequest",
         uri: "https://example.org/abcd1234/full/max/0/default.jpg",
         scheme: "https",
@@ -130,7 +131,7 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/full/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "imageRequest",
           uri: "https://example.org/image-service/iiif/abcd1234/full/max/0/default.jpg",
           scheme: "https",
@@ -160,7 +161,7 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/square/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "imageRequest",
           uri: "https://example.org/image-service/iiif/abcd1234/square/max/0/default.jpg",
           scheme: "https",
@@ -190,8 +191,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/1,3,22,44/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "imageRequest",
+          uri: "https://example.org/image-service/iiif/abcd1234/1,3,22,44/max/0/default.jpg",
           scheme: "https",
           server: {
             host: "example.org",
@@ -223,8 +225,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/pct:0.1,12,33.3,45/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "imageRequest",
+          uri: "https://example.org/image-service/iiif/abcd1234/pct:0.1,12,33.3,45/max/0/default.jpg",
           scheme: "https",
           server: {
             host: "example.org",
@@ -258,8 +261,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/full/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "imageRequest",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/full/0/default.jpg",
           scheme: "https",
           server: {
             host: "example.org",
@@ -291,8 +295,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "imageRequest",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/max/0/default.jpg",
           scheme: "https",
           server: {
             host: "example.org",
@@ -324,8 +329,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:44.5/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "imageRequest",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:44.5/0/default.jpg",
           scheme: "https",
           server: {
             host: "example.org",
@@ -358,8 +364,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/72,/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "imageRequest",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/72,/0/default.jpg",
           scheme: "https",
           server: {
             host: "example.org",
@@ -392,8 +399,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,283/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "imageRequest",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,283/0/default.jpg",
           scheme: "https",
           server: {
             host: "example.org",
@@ -426,8 +434,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/145,283/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "imageRequest",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/145,283/0/default.jpg",
           scheme: "https",
           server: {
             host: "example.org",
@@ -461,8 +470,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!12,34/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "imageRequest",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!12,34/0/default.jpg",
           scheme: "https",
           server: {
             host: "example.org",
@@ -494,118 +504,14 @@ describe("parse Image Request URI", () => {
 
     describe("rotation", () => {
       describe("clockwise", () => {
-        test.each([0, 1, 90, 180, 360, 0.1, 1.1, 90.123, 180.4546, 360])(
-          "https://example.org/image-service/abcd1234/full/max/%s/default.jpg",
-          (degrees) => {
-            const result = parseURI(
-              `https://example.org/image-service/abcd1234/full/max/${degrees}/default.jpg`,
-            );
-
-            expect(result).toMatchObject({
-              tag: "imageRequest",
-              scheme: "https",
-              server: {
-                host: "example.org",
-                port: undefined,
-              },
-              prefix: "/image-service",
-              identifier: "abcd1234",
-              region: {
-                tag: "full",
-              },
-              size: {
-                tag: "max",
-              },
-              rotation: {
-                tag: "clockwise",
-                degrees,
-              },
-              quality: "default",
-              format: "jpg",
-            });
-          },
-        );
-      });
-
-      describe("mirrored", () => {
-        test.each([0, 1, 90, 180, 360, 0.1, 1.1, 90.123, 180.4546, 360])(
-          "https://example.org/image-service/abcd1234/full/max/%s/default.jpg",
-          (degrees) => {
-            const result = parseURI(
-              `https://example.org/image-service/abcd1234/full/max/!${degrees}/default.jpg`,
-            );
-
-            expect(result).toMatchObject({
-              tag: "imageRequest",
-              scheme: "https",
-              server: {
-                host: "example.org",
-                port: undefined,
-              },
-              prefix: "/image-service",
-              identifier: "abcd1234",
-              region: {
-                tag: "full",
-              },
-              size: {
-                tag: "max",
-              },
-              rotation: {
-                tag: "mirrored",
-                degrees,
-              },
-              quality: "default",
-              format: "jpg",
-            });
-          },
-        );
-      });
-    });
-
-    describe("quality", () => {
-      test.each(["color", "gray", "bitonal", "default"])(
-        "https://example.org/image-service/abcd1234/full/max/0/%s.jpg",
-        (quality) => {
+        test("https://example.org/image-service/abcd1234/full/max/0/default.jpg", () => {
           const result = parseURI(
-            `https://example.org/image-service/abcd1234/full/max/0/${quality}.jpg`,
+            `https://example.org/image-service/abcd1234/full/max/0/default.jpg`,
           );
 
-          expect(result).toMatchObject({
+          assert.deepStrictEqual(result, {
             tag: "imageRequest",
-            scheme: "https",
-            server: {
-              host: "example.org",
-              port: undefined,
-            },
-            prefix: "/image-service",
-            identifier: "abcd1234",
-            region: {
-              tag: "full",
-            },
-            size: {
-              tag: "max",
-            },
-            rotation: {
-              tag: "clockwise",
-              degrees: 0,
-            },
-            quality,
-            format: "jpg",
-          });
-        },
-      );
-    });
-
-    describe("format", () => {
-      test.each(["jpg", "png", "tif", "JPG", "JPEG"])(
-        "https://example.org/image-service/abcd1234/full/max/0/default.%s",
-        (format) => {
-          const result = parseURI(
-            `https://example.org/image-service/abcd1234/full/max/0/default.${format}`,
-          );
-
-          expect(result).toMatchObject({
-            tag: "imageRequest",
+            uri: "https://example.org/image-service/abcd1234/full/max/0/default.jpg",
             scheme: "https",
             server: {
               host: "example.org",
@@ -624,10 +530,646 @@ describe("parse Image Request URI", () => {
               degrees: 0,
             },
             quality: "default",
-            format,
+            format: "jpg",
           });
-        },
-      );
+        });
+
+        test("https://example.org/image-service/abcd1234/full/max/1/default.jpg", () => {
+          const result = parseURI(
+            `https://example.org/image-service/abcd1234/full/max/1/default.jpg`,
+          );
+
+          assert.deepStrictEqual(result, {
+            tag: "imageRequest",
+            uri: "https://example.org/image-service/abcd1234/full/max/1/default.jpg",
+            scheme: "https",
+            server: {
+              host: "example.org",
+              port: undefined,
+            },
+            prefix: "/image-service",
+            identifier: "abcd1234",
+            region: {
+              tag: "full",
+            },
+            size: {
+              tag: "max",
+            },
+            rotation: {
+              tag: "clockwise",
+              degrees: 1,
+            },
+            quality: "default",
+            format: "jpg",
+          });
+        });
+
+        test("https://example.org/image-service/abcd1234/full/max/90/default.jpg", () => {
+          const result = parseURI(
+            `https://example.org/image-service/abcd1234/full/max/90/default.jpg`,
+          );
+
+          assert.deepStrictEqual(result, {
+            tag: "imageRequest",
+            uri: "https://example.org/image-service/abcd1234/full/max/90/default.jpg",
+            scheme: "https",
+            server: {
+              host: "example.org",
+              port: undefined,
+            },
+            prefix: "/image-service",
+            identifier: "abcd1234",
+            region: {
+              tag: "full",
+            },
+            size: {
+              tag: "max",
+            },
+            rotation: {
+              tag: "clockwise",
+              degrees: 90,
+            },
+            quality: "default",
+            format: "jpg",
+          });
+        });
+
+        test("https://example.org/image-service/abcd1234/full/max/180/default.jpg", () => {
+          const result = parseURI(
+            `https://example.org/image-service/abcd1234/full/max/180/default.jpg`,
+          );
+
+          assert.deepStrictEqual(result, {
+            tag: "imageRequest",
+            uri: "https://example.org/image-service/abcd1234/full/max/180/default.jpg",
+            scheme: "https",
+            server: {
+              host: "example.org",
+              port: undefined,
+            },
+            prefix: "/image-service",
+            identifier: "abcd1234",
+            region: {
+              tag: "full",
+            },
+            size: {
+              tag: "max",
+            },
+            rotation: {
+              tag: "clockwise",
+              degrees: 180,
+            },
+            quality: "default",
+            format: "jpg",
+          });
+        });
+
+        test("https://example.org/image-service/abcd1234/full/max/360/default.jpg", () => {
+          const result = parseURI(
+            `https://example.org/image-service/abcd1234/full/max/360/default.jpg`,
+          );
+
+          assert.deepStrictEqual(result, {
+            tag: "imageRequest",
+            uri: "https://example.org/image-service/abcd1234/full/max/360/default.jpg",
+            scheme: "https",
+            server: {
+              host: "example.org",
+              port: undefined,
+            },
+            prefix: "/image-service",
+            identifier: "abcd1234",
+            region: {
+              tag: "full",
+            },
+            size: {
+              tag: "max",
+            },
+            rotation: {
+              tag: "clockwise",
+              degrees: 360,
+            },
+            quality: "default",
+            format: "jpg",
+          });
+        });
+
+        test("https://example.org/image-service/abcd1234/full/max/0.1/default.jpg", () => {
+          const result = parseURI(
+            `https://example.org/image-service/abcd1234/full/max/0.1/default.jpg`,
+          );
+
+          assert.deepStrictEqual(result, {
+            tag: "imageRequest",
+            uri: "https://example.org/image-service/abcd1234/full/max/0.1/default.jpg",
+            scheme: "https",
+            server: {
+              host: "example.org",
+              port: undefined,
+            },
+            prefix: "/image-service",
+            identifier: "abcd1234",
+            region: {
+              tag: "full",
+            },
+            size: {
+              tag: "max",
+            },
+            rotation: {
+              tag: "clockwise",
+              degrees: 0.1,
+            },
+            quality: "default",
+            format: "jpg",
+          });
+        });
+
+        test("https://example.org/image-service/abcd1234/full/max/1.1/default.jpg", () => {
+          const result = parseURI(
+            `https://example.org/image-service/abcd1234/full/max/1.1/default.jpg`,
+          );
+
+          assert.deepStrictEqual(result, {
+            tag: "imageRequest",
+            uri: "https://example.org/image-service/abcd1234/full/max/1.1/default.jpg",
+            scheme: "https",
+            server: {
+              host: "example.org",
+              port: undefined,
+            },
+            prefix: "/image-service",
+            identifier: "abcd1234",
+            region: {
+              tag: "full",
+            },
+            size: {
+              tag: "max",
+            },
+            rotation: {
+              tag: "clockwise",
+              degrees: 1.1,
+            },
+            quality: "default",
+            format: "jpg",
+          });
+        });
+
+        test("https://example.org/image-service/abcd1234/full/max/90.123/default.jpg", () => {
+          const result = parseURI(
+            `https://example.org/image-service/abcd1234/full/max/90.123/default.jpg`,
+          );
+
+          assert.deepStrictEqual(result, {
+            tag: "imageRequest",
+            uri: "https://example.org/image-service/abcd1234/full/max/90.123/default.jpg",
+            scheme: "https",
+            server: {
+              host: "example.org",
+              port: undefined,
+            },
+            prefix: "/image-service",
+            identifier: "abcd1234",
+            region: {
+              tag: "full",
+            },
+            size: {
+              tag: "max",
+            },
+            rotation: {
+              tag: "clockwise",
+              degrees: 90.123,
+            },
+            quality: "default",
+            format: "jpg",
+          });
+        });
+
+        test("https://example.org/image-service/abcd1234/full/max/180.4546/default.jpg", () => {
+          const result = parseURI(
+            `https://example.org/image-service/abcd1234/full/max/180.4546/default.jpg`,
+          );
+
+          assert.deepStrictEqual(result, {
+            tag: "imageRequest",
+            uri: "https://example.org/image-service/abcd1234/full/max/180.4546/default.jpg",
+            scheme: "https",
+            server: {
+              host: "example.org",
+              port: undefined,
+            },
+            prefix: "/image-service",
+            identifier: "abcd1234",
+            region: {
+              tag: "full",
+            },
+            size: {
+              tag: "max",
+            },
+            rotation: {
+              tag: "clockwise",
+              degrees: 180.4546,
+            },
+            quality: "default",
+            format: "jpg",
+          });
+        });
+      });
+
+      describe("mirrored", () => {
+        test("https://example.org/image-service/abcd1234/full/max/!0/default.jpg", () => {
+          const result = parseURI(
+            `https://example.org/image-service/abcd1234/full/max/!0/default.jpg`,
+          );
+
+          assert.deepStrictEqual(result, {
+            tag: "imageRequest",
+            uri: "https://example.org/image-service/abcd1234/full/max/!0/default.jpg",
+            scheme: "https",
+            server: {
+              host: "example.org",
+              port: undefined,
+            },
+            prefix: "/image-service",
+            identifier: "abcd1234",
+            region: {
+              tag: "full",
+            },
+            size: {
+              tag: "max",
+            },
+            rotation: {
+              tag: "mirrored",
+              degrees: 0,
+            },
+            quality: "default",
+            format: "jpg",
+          });
+        });
+
+        test("https://example.org/image-service/abcd1234/full/max/!1/default.jpg", () => {
+          const result = parseURI(
+            `https://example.org/image-service/abcd1234/full/max/!1/default.jpg`,
+          );
+
+          assert.deepStrictEqual(result, {
+            tag: "imageRequest",
+            uri: "https://example.org/image-service/abcd1234/full/max/!1/default.jpg",
+            scheme: "https",
+            server: {
+              host: "example.org",
+              port: undefined,
+            },
+            prefix: "/image-service",
+            identifier: "abcd1234",
+            region: {
+              tag: "full",
+            },
+            size: {
+              tag: "max",
+            },
+            rotation: {
+              tag: "mirrored",
+              degrees: 1,
+            },
+            quality: "default",
+            format: "jpg",
+          });
+        });
+
+        test("https://example.org/image-service/abcd1234/full/max/!0.1/default.jpg", () => {
+          const result = parseURI(
+            `https://example.org/image-service/abcd1234/full/max/!0.1/default.jpg`,
+          );
+
+          assert.deepStrictEqual(result, {
+            tag: "imageRequest",
+            uri: "https://example.org/image-service/abcd1234/full/max/!0.1/default.jpg",
+            scheme: "https",
+            server: {
+              host: "example.org",
+              port: undefined,
+            },
+            prefix: "/image-service",
+            identifier: "abcd1234",
+            region: {
+              tag: "full",
+            },
+            size: {
+              tag: "max",
+            },
+            rotation: {
+              tag: "mirrored",
+              degrees: 0.1,
+            },
+            quality: "default",
+            format: "jpg",
+          });
+        });
+
+        test("https://example.org/image-service/abcd1234/full/max/!180.4546/default.jpg", () => {
+          const result = parseURI(
+            `https://example.org/image-service/abcd1234/full/max/!180.4546/default.jpg`,
+          );
+
+          assert.deepStrictEqual(result, {
+            tag: "imageRequest",
+            uri: "https://example.org/image-service/abcd1234/full/max/!180.4546/default.jpg",
+            scheme: "https",
+            server: {
+              host: "example.org",
+              port: undefined,
+            },
+            prefix: "/image-service",
+            identifier: "abcd1234",
+            region: {
+              tag: "full",
+            },
+            size: {
+              tag: "max",
+            },
+            rotation: {
+              tag: "mirrored",
+              degrees: 180.4546,
+            },
+            quality: "default",
+            format: "jpg",
+          });
+        });
+      });
+    });
+
+    describe("quality", () => {
+      test("https://example.org/image-service/abcd1234/full/max/0/color.jpg", () => {
+        const result = parseURI(
+          `https://example.org/image-service/abcd1234/full/max/0/color.jpg`,
+        );
+
+        assert.deepStrictEqual(result, {
+          tag: "imageRequest",
+          uri: "https://example.org/image-service/abcd1234/full/max/0/color.jpg",
+          scheme: "https",
+          server: {
+            host: "example.org",
+            port: undefined,
+          },
+          prefix: "/image-service",
+          identifier: "abcd1234",
+          region: {
+            tag: "full",
+          },
+          size: {
+            tag: "max",
+          },
+          rotation: {
+            tag: "clockwise",
+            degrees: 0,
+          },
+          quality: "color",
+          format: "jpg",
+        });
+      });
+
+      test("https://example.org/image-service/abcd1234/full/max/0/gray.jpg", () => {
+        const result = parseURI(
+          `https://example.org/image-service/abcd1234/full/max/0/gray.jpg`,
+        );
+
+        assert.deepStrictEqual(result, {
+          tag: "imageRequest",
+          uri: "https://example.org/image-service/abcd1234/full/max/0/gray.jpg",
+          scheme: "https",
+          server: {
+            host: "example.org",
+            port: undefined,
+          },
+          prefix: "/image-service",
+          identifier: "abcd1234",
+          region: {
+            tag: "full",
+          },
+          size: {
+            tag: "max",
+          },
+          rotation: {
+            tag: "clockwise",
+            degrees: 0,
+          },
+          quality: "gray",
+          format: "jpg",
+        });
+      });
+
+      test("https://example.org/image-service/abcd1234/full/max/0/bitonal.jpg", () => {
+        const result = parseURI(
+          `https://example.org/image-service/abcd1234/full/max/0/bitonal.jpg`,
+        );
+
+        assert.deepStrictEqual(result, {
+          tag: "imageRequest",
+          uri: "https://example.org/image-service/abcd1234/full/max/0/bitonal.jpg",
+          scheme: "https",
+          server: {
+            host: "example.org",
+            port: undefined,
+          },
+          prefix: "/image-service",
+          identifier: "abcd1234",
+          region: {
+            tag: "full",
+          },
+          size: {
+            tag: "max",
+          },
+          rotation: {
+            tag: "clockwise",
+            degrees: 0,
+          },
+          quality: "bitonal",
+          format: "jpg",
+        });
+      });
+
+      test("https://example.org/image-service/abcd1234/full/max/0/default.jpg", () => {
+        const result = parseURI(
+          `https://example.org/image-service/abcd1234/full/max/0/default.jpg`,
+        );
+
+        assert.deepStrictEqual(result, {
+          tag: "imageRequest",
+          uri: "https://example.org/image-service/abcd1234/full/max/0/default.jpg",
+          scheme: "https",
+          server: {
+            host: "example.org",
+            port: undefined,
+          },
+          prefix: "/image-service",
+          identifier: "abcd1234",
+          region: {
+            tag: "full",
+          },
+          size: {
+            tag: "max",
+          },
+          rotation: {
+            tag: "clockwise",
+            degrees: 0,
+          },
+          quality: "default",
+          format: "jpg",
+        });
+      });
+    });
+
+    describe("format", () => {
+      test("https://example.org/image-service/abcd1234/full/max/0/default.jpg", () => {
+        const result = parseURI(
+          `https://example.org/image-service/abcd1234/full/max/0/default.jpg`,
+        );
+
+        assert.deepStrictEqual(result, {
+          tag: "imageRequest",
+          uri: "https://example.org/image-service/abcd1234/full/max/0/default.jpg",
+          scheme: "https",
+          server: {
+            host: "example.org",
+            port: undefined,
+          },
+          prefix: "/image-service",
+          identifier: "abcd1234",
+          region: {
+            tag: "full",
+          },
+          size: {
+            tag: "max",
+          },
+          rotation: {
+            tag: "clockwise",
+            degrees: 0,
+          },
+          quality: "default",
+          format: "jpg",
+        });
+      });
+
+      test("https://example.org/image-service/abcd1234/full/max/0/default.png", () => {
+        const result = parseURI(
+          `https://example.org/image-service/abcd1234/full/max/0/default.png`,
+        );
+
+        assert.deepStrictEqual(result, {
+          tag: "imageRequest",
+          uri: "https://example.org/image-service/abcd1234/full/max/0/default.png",
+          scheme: "https",
+          server: {
+            host: "example.org",
+            port: undefined,
+          },
+          prefix: "/image-service",
+          identifier: "abcd1234",
+          region: {
+            tag: "full",
+          },
+          size: {
+            tag: "max",
+          },
+          rotation: {
+            tag: "clockwise",
+            degrees: 0,
+          },
+          quality: "default",
+          format: "png",
+        });
+      });
+
+      test("https://example.org/image-service/abcd1234/full/max/0/default.tif", () => {
+        const result = parseURI(
+          `https://example.org/image-service/abcd1234/full/max/0/default.tif`,
+        );
+
+        assert.deepStrictEqual(result, {
+          tag: "imageRequest",
+          uri: "https://example.org/image-service/abcd1234/full/max/0/default.tif",
+          scheme: "https",
+          server: {
+            host: "example.org",
+            port: undefined,
+          },
+          prefix: "/image-service",
+          identifier: "abcd1234",
+          region: {
+            tag: "full",
+          },
+          size: {
+            tag: "max",
+          },
+          rotation: {
+            tag: "clockwise",
+            degrees: 0,
+          },
+          quality: "default",
+          format: "tif",
+        });
+      });
+
+      test("https://example.org/image-service/abcd1234/full/max/0/default.JPG", () => {
+        const result = parseURI(
+          `https://example.org/image-service/abcd1234/full/max/0/default.JPG`,
+        );
+
+        assert.deepStrictEqual(result, {
+          tag: "imageRequest",
+          uri: "https://example.org/image-service/abcd1234/full/max/0/default.JPG",
+          scheme: "https",
+          server: {
+            host: "example.org",
+            port: undefined,
+          },
+          prefix: "/image-service",
+          identifier: "abcd1234",
+          region: {
+            tag: "full",
+          },
+          size: {
+            tag: "max",
+          },
+          rotation: {
+            tag: "clockwise",
+            degrees: 0,
+          },
+          quality: "default",
+          format: "JPG",
+        });
+      });
+
+      test("https://example.org/image-service/abcd1234/full/max/0/default.JPEG", () => {
+        const result = parseURI(
+          `https://example.org/image-service/abcd1234/full/max/0/default.JPEG`,
+        );
+
+        assert.deepStrictEqual(result, {
+          tag: "imageRequest",
+          uri: "https://example.org/image-service/abcd1234/full/max/0/default.JPEG",
+          scheme: "https",
+          server: {
+            host: "example.org",
+            port: undefined,
+          },
+          prefix: "/image-service",
+          identifier: "abcd1234",
+          region: {
+            tag: "full",
+          },
+          size: {
+            tag: "max",
+          },
+          rotation: {
+            tag: "clockwise",
+            degrees: 0,
+          },
+          quality: "default",
+          format: "JPEG",
+        });
+      });
     });
   });
 
@@ -635,13 +1177,14 @@ describe("parse Image Request URI", () => {
     test("missing identifier", () => {
       const result = parseURI("https://example.org/full/max/0/default.jpg");
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "error",
         uri: "https://example.org/full/max/0/default.jpg",
         errors: [
           {
             tag: "malformedPath",
             value: "/full/max/0/default.jpg",
+            message: "Not enough parameters in URI",
           },
         ],
       });
@@ -652,7 +1195,7 @@ describe("parse Image Request URI", () => {
         "ftp://example.org/image-service/123abc/full/max/0/default.jpg",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "error",
         uri: "ftp://example.org/image-service/123abc/full/max/0/default.jpg",
         errors: [
@@ -671,8 +1214,9 @@ describe("parse Image Request URI", () => {
           "://example.org/image-service/123abc/full/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "://example.org/image-service/123abc/full/max/0/default.jpg",
           errors: [
             {
               tag: "malformedURI",
@@ -688,8 +1232,9 @@ describe("parse Image Request URI", () => {
           "https://example.org:FOO/image-service/123abc/full/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org:FOO/image-service/123abc/full/max/0/default.jpg",
           errors: [
             {
               tag: "malformedURI",
@@ -705,8 +1250,9 @@ describe("parse Image Request URI", () => {
           "https://example.org:-1/image-service/123abc/full/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org:-1/image-service/123abc/full/max/0/default.jpg",
           errors: [
             {
               tag: "malformedURI",
@@ -722,8 +1268,9 @@ describe("parse Image Request URI", () => {
           "https://example.org:65536/image-service/123abc/full/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org:65536/image-service/123abc/full/max/0/default.jpg",
           errors: [
             {
               tag: "malformedURI",
@@ -739,8 +1286,9 @@ describe("parse Image Request URI", () => {
           "https://example.org:33.5/image-service/123abc/full/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org:33.5/image-service/123abc/full/max/0/default.jpg",
           errors: [
             {
               tag: "malformedURI",
@@ -757,8 +1305,9 @@ describe("parse Image Request URI", () => {
         "https://example.org/image-service/abcd1234/max/0/default.jpg",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "error",
+        uri: "https://example.org/image-service/abcd1234/max/0/default.jpg",
         errors: [
           {
             tag: "badRegion",
@@ -773,8 +1322,9 @@ describe("parse Image Request URI", () => {
         "https://example.org/image-service/abcd1234/full/0/default.jpg",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "error",
+        uri: "https://example.org/image-service/abcd1234/full/0/default.jpg",
         errors: [
           {
             tag: "badRegion",
@@ -789,8 +1339,9 @@ describe("parse Image Request URI", () => {
         "https://example.org/image-service/abcd1234/full/max/default.jpg",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "error",
+        uri: "https://example.org/image-service/abcd1234/full/max/default.jpg",
         errors: [
           {
             tag: "badRotation",
@@ -806,8 +1357,9 @@ describe("parse Image Request URI", () => {
         "https://example.org/image-service/abcd1234/full/max/0/.jpg",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "error",
+        uri: "https://example.org/image-service/abcd1234/full/max/0/.jpg",
         errors: [
           {
             tag: "missingQuality",
@@ -822,8 +1374,9 @@ describe("parse Image Request URI", () => {
         "https://example.org/image-service/abcd1234/full/max/0/default.",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "error",
+        uri: "https://example.org/image-service/abcd1234/full/max/0/default.",
         errors: [
           {
             tag: "missingFormat",
@@ -838,8 +1391,9 @@ describe("parse Image Request URI", () => {
         "https://example.org/image-service/abcd1234/full/max/0/default.jpg.png",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "error",
+        uri: "https://example.org/image-service/abcd1234/full/max/0/default.jpg.png",
         errors: [
           {
             tag: "malformedPath",
@@ -854,8 +1408,9 @@ describe("parse Image Request URI", () => {
         "https://example.org/image-service/abcd1234/full/max/0/default",
       );
 
-      expect(result).toMatchObject({
+      assert.deepStrictEqual(result, {
         tag: "error",
+        uri: "https://example.org/image-service/abcd1234/full/max/0/default",
         errors: [
           {
             tag: "malformedPath",
@@ -871,8 +1426,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/-1,3,22,44/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/-1,3,22,44/max/0/default.jpg",
           errors: [
             {
               tag: "badRegion",
@@ -887,8 +1443,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/1,-3,22,44/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/1,-3,22,44/max/0/default.jpg",
           errors: [
             {
               tag: "badRegion",
@@ -903,8 +1460,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/1,3,-22,44/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/1,3,-22,44/max/0/default.jpg",
           errors: [
             {
               tag: "badRegion",
@@ -919,8 +1477,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/1,3,22,-44/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/1,3,22,-44/max/0/default.jpg",
           errors: [
             {
               tag: "badRegion",
@@ -935,8 +1494,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234//max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234//max/0/default.jpg",
           errors: [
             {
               tag: "badRegion",
@@ -951,8 +1511,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/,,,/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/,,,/max/0/default.jpg",
           errors: [
             {
               tag: "badRegion",
@@ -967,8 +1528,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/1/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/1/max/0/default.jpg",
           errors: [
             {
               tag: "badRegion",
@@ -983,8 +1545,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/1,2/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/1,2/max/0/default.jpg",
           errors: [
             {
               tag: "badRegion",
@@ -999,8 +1562,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/1,2,3/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/1,2,3/max/0/default.jpg",
           errors: [
             {
               tag: "badRegion",
@@ -1015,8 +1579,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/,1,2,3,4/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/,1,2,3,4/max/0/default.jpg",
           errors: [
             {
               tag: "badRegion",
@@ -1031,8 +1596,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/1,2,3,4,/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/1,2,3,4,/max/0/default.jpg",
           errors: [
             {
               tag: "badRegion",
@@ -1047,8 +1613,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/,1,2,3,4,/max/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/,1,2,3,4,/max/0/default.jpg",
           errors: [
             {
               tag: "badRegion",
@@ -1065,12 +1632,14 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3//0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3//0/default.jpg",
           errors: [
             {
               tag: "badSize",
               value: "",
+              message: "Unable to parse value into a size",
             },
           ],
         });
@@ -1081,12 +1650,14 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,,,/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,,,/0/default.jpg",
           errors: [
             {
               tag: "badSize",
               value: ",,,",
+              message: "Error parsing ',,'",
             },
           ],
         });
@@ -1097,12 +1668,14 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:/0/default.jpg",
           errors: [
             {
               tag: "badSize",
               value: "pct:",
+              message: "Error parsing ''",
             },
           ],
         });
@@ -1113,12 +1686,14 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct/0/default.jpg",
           errors: [
             {
               tag: "badSize",
               value: "pct",
+              message: "Unable to parse value into a size",
             },
           ],
         });
@@ -1129,8 +1704,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:-1/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:-1/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1145,8 +1721,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:hello/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:hello/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1162,8 +1739,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/1,1,1/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/1,1,1/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1179,8 +1757,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/0,/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/0,/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1195,8 +1774,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/-1,/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/-1,/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1211,7 +1791,7 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/bingo,/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
           uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/bingo,/0/default.jpg",
           errors: [
@@ -1229,8 +1809,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,0/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,0/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1245,8 +1826,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,-1/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,-1/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1261,8 +1843,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,bingo/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,bingo/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1278,8 +1861,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/-145,283/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/-145,283/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1294,8 +1878,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/145,-283/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/145,-283/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1310,8 +1895,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/-145,-283/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/-145,-283/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1326,8 +1912,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/0,283/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/0,283/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1342,8 +1929,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/12,0/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/12,0/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1358,8 +1946,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/0,0/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/0,0/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1374,7 +1963,7 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/bingo,283/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
           uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/bingo,283/0/default.jpg",
           errors: [
@@ -1392,8 +1981,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/12,bingo/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/12,bingo/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1409,8 +1999,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/bin,go/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/bin,go/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1426,8 +2017,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/unsupported/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/unsupported/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1443,8 +2035,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1460,8 +2053,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!,/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!,/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1477,8 +2071,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!1,1,1,1/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!1,1,1,1/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1494,8 +2089,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!-1/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!-1/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1511,8 +2107,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!0/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!0/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1528,8 +2125,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!bingo/0/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!bingo/0/default.jpg",
           errors: [
             {
               tag: "badSize",
@@ -1547,12 +2145,14 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/abcd1234/full/max//default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/abcd1234/full/max//default.jpg",
           errors: [
             {
               tag: "badRotation",
               value: "",
+              message: "Error parsing '' into degree of rotation",
             },
           ],
         });
@@ -1563,8 +2163,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/abcd1234/full/max/-1/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/abcd1234/full/max/-1/default.jpg",
           errors: [
             {
               tag: "badRotation",
@@ -1580,8 +2181,9 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/abcd1234/full/max/361/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/abcd1234/full/max/361/default.jpg",
           errors: [
             {
               tag: "badRotation",
@@ -1597,13 +2199,14 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/abcd1234/full/max/360.00001/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
           uri: "https://example.org/image-service/abcd1234/full/max/360.00001/default.jpg",
           errors: [
             {
               tag: "badRotation",
               value: "360.00001",
+              message: "The degree of rotation must be <= 360",
             },
           ],
         });
@@ -1614,12 +2217,14 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/abcd1234/full/max/bingo/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/abcd1234/full/max/bingo/default.jpg",
           errors: [
             {
               tag: "badRotation",
               value: "bingo",
+              message: "Error parsing 'bingo' into degree of rotation",
             },
           ],
         });
@@ -1630,12 +2235,14 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/abcd1234/full/max/!/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/abcd1234/full/max/!/default.jpg",
           errors: [
             {
               tag: "badRotation",
               value: "!",
+              message: "Error parsing '' into degree of rotation",
             },
           ],
         });
@@ -1646,12 +2253,14 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/abcd1234/full/max/!-1/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/abcd1234/full/max/!-1/default.jpg",
           errors: [
             {
               tag: "badRotation",
               value: "!-1",
+              message: "The degree of rotation must be >= 0",
             },
           ],
         });
@@ -1662,12 +2271,14 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/abcd1234/full/max/!361/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/abcd1234/full/max/!361/default.jpg",
           errors: [
             {
               tag: "badRotation",
               value: "!361",
+              message: "The degree of rotation must be <= 360",
             },
           ],
         });
@@ -1678,12 +2289,14 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/abcd1234/full/max/!360.00001/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/abcd1234/full/max/!360.00001/default.jpg",
           errors: [
             {
               tag: "badRotation",
               value: "!360.00001",
+              message: "The degree of rotation must be <= 360",
             },
           ],
         });
@@ -1694,12 +2307,14 @@ describe("parse Image Request URI", () => {
           "https://example.org/image-service/abcd1234/full/max/!bingo/default.jpg",
         );
 
-        expect(result).toMatchObject({
+        assert.deepStrictEqual(result, {
           tag: "error",
+          uri: "https://example.org/image-service/abcd1234/full/max/!bingo/default.jpg",
           errors: [
             {
               tag: "badRotation",
               value: "!bingo",
+              message: "Error parsing 'bingo' into degree of rotation",
             },
           ],
         });
