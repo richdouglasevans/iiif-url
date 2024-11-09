@@ -24,8 +24,8 @@
   "scripts": {
     "build": "npm run build:ts && npm run test",
     "build:ts": "tsup ./lib/index.ts --format cjs,esm --dts --clean --sourcemap",
-    "format": "npx prettier --loglevel warn --write \"**/*\"",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest"
+    "format": "npx prettier --log-level warn --write \"**/*\"",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules node --import tsx --test __tests__/*.test.ts"
   },
   "keywords": [
     "iiif"
@@ -33,17 +33,11 @@
   "author": "Rich Douglas",
   "license": "MIT",
   "devDependencies": {
-    "@jest/globals": "^29.7.0",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.14.9",
+    "@types/node": "^22.9.0",
     "cross-env": "^7.0.3",
-    "jest": "^29.7.0",
-    "prettier": "^3.3.2",
-    "ts-jest": "^29.1.5",
-    "tsup": "^8.1.0",
-    "typescript": "^5.5.2"
-  },
-  "jest": {
-    "preset": "./jest.preset.cjs"
+    "prettier": "^3.3.3",
+    "tsup": "8.3.5",
+    "tsx": "^4.19.2",
+    "typescript": "5.6.3"
   }
 }
