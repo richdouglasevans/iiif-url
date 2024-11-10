@@ -41,7 +41,7 @@ export function parseQualityAndFormat(
 
   const parts = data.split(".");
 
-  if (parts.length != 2) {
+  if (parts.length !== 2) {
     // we've got something like "default.funky.jpg"
     return <MalformedPath>{
       tag: "malformedPath",
@@ -49,5 +49,6 @@ export function parseQualityAndFormat(
     };
   }
 
+  // biome-ignore lint/style/noNonNullAssertion: accounted for earlier
   return [parseQuality(parts[0]!), parseFormat(parts[1]!)];
 }

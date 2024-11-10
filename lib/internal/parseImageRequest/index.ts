@@ -8,8 +8,8 @@ import type {
   Scheme,
 } from "../../types.js";
 import {
+  type ParsedImageRequest,
   isUnsupportedScheme,
-  ParsedImageRequest,
   parseScheme,
   parseServer,
 } from "../index.js";
@@ -47,6 +47,7 @@ export function parseImageRequest(url: URL): ImageRequest | ParseError {
   let quality: Quality | undefined = undefined;
   let format: Format | undefined = undefined;
 
+  // biome-ignore lint/style/noNonNullAssertion: length was asserted earlier
   const qf = parseQualityAndFormat(paths.pop()!);
 
   if (!Array.isArray(qf)) {
@@ -75,6 +76,7 @@ export function parseImageRequest(url: URL): ImageRequest | ParseError {
     };
   }
 
+  // biome-ignore lint/style/noNonNullAssertion: length was asserted earlier
   const maybeRotation = parseRotation(paths.pop()!);
   if (isBadRotation(maybeRotation)) {
     return <ParseError>{
@@ -85,6 +87,7 @@ export function parseImageRequest(url: URL): ImageRequest | ParseError {
   }
   const rotation = maybeRotation;
 
+  // biome-ignore lint/style/noNonNullAssertion: length was asserted earlier
   const maybeSize = parseSize(paths.pop()!);
   if (isBadSize(maybeSize)) {
     return <ParseError>{
@@ -95,6 +98,7 @@ export function parseImageRequest(url: URL): ImageRequest | ParseError {
   }
   const size = maybeSize;
 
+  // biome-ignore lint/style/noNonNullAssertion: length was asserted earlier
   const maybeRegion = parseRegion(paths.pop()!);
   if (isBadRegion(maybeRegion)) {
     return <ParseError>{
@@ -105,6 +109,7 @@ export function parseImageRequest(url: URL): ImageRequest | ParseError {
   }
   const region = maybeRegion;
 
+  // biome-ignore lint/style/noNonNullAssertion: length was asserted earlier
   const identifier = decodeURIComponent(paths.pop()!);
   const prefix = paths.length > 1 ? paths.join("/") : undefined;
 
@@ -117,7 +122,9 @@ export function parseImageRequest(url: URL): ImageRequest | ParseError {
     region,
     size,
     rotation,
+    // biome-ignore lint/style/noNonNullAssertion: accounted for earlier
     quality: quality!,
+    // biome-ignore lint/style/noNonNullAssertion: accounted for earlier
     format: format!,
   };
 
