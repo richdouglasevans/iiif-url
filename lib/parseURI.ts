@@ -8,9 +8,8 @@ export function parseURI(uri: string): ParseResult {
 
     if (url.pathname.endsWith("info.json")) {
       return parseImageInformationRequestURI(url);
-    } else {
-      return parseImageRequest(url);
     }
+    return parseImageRequest(url);
   } catch (err) {
     return <ParseError>{
       tag: "error",

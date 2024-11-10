@@ -59,7 +59,7 @@ function serializeRegion(region: Region): string {
 }
 
 function serializeSize(size: Size): string {
-  const scaled = size.scaled ? '^' : '';
+  const scaled = size.scaled ? "^" : "";
 
   switch (size.tag) {
     case "max":

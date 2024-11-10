@@ -15,27 +15,25 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": [
-    "./dist/**/*"
-  ],
+  "files": ["./dist/**/*"],
   "engines": {
     "node": ">=18"
   },
   "scripts": {
-    "build": "npm run build:ts && npm run test",
+    "build": " npm run check && npm run build:ts && npm run test",
     "build:ts": "tsup ./lib/index.ts --format cjs,esm --dts --clean --sourcemap",
-    "format": "npx prettier --log-level warn --write \"**/*\"",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules node --import tsx --test __tests__/*.test.ts"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules node --import tsx --test __tests__/*.test.ts",
+    "check": "npx @biomejs/biome check --write ./lib",
+    "format": "npx @biomejs/biome format --write ./lib",
+    "lint": "npx @biomejs/biome lint --write ./lib"
   },
-  "keywords": [
-    "iiif"
-  ],
+  "keywords": ["iiif"],
   "author": "Rich Douglas",
   "license": "MIT",
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@types/node": "^22.9.0",
     "cross-env": "^7.0.3",
-    "prettier": "^3.3.3",
     "tsup": "8.3.5",
     "tsx": "^4.19.2",
     "typescript": "5.6.3"
