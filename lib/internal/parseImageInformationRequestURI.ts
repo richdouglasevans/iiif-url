@@ -6,8 +6,8 @@ import type {
   Scheme,
 } from "../types.js";
 import {
+  type ParsedImageInformationRequest,
   isUnsupportedScheme,
-  ParsedImageInformationRequest,
   parseScheme,
   parseServer,
 } from "./index.js";
@@ -52,6 +52,7 @@ export function parseImageInformationRequestURI(
   // in "info.json" else we wouldn't be in this function
   paths.pop();
 
+  // biome-ignore lint/style/noNonNullAssertion: accounted for earlier
   const identifier = decodeURIComponent(paths.pop()!);
   const prefix = paths.length > 1 ? paths.join("/") : undefined;
 

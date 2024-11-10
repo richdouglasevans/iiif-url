@@ -1,11 +1,11 @@
 import type {
   BadSize,
   Size,
+  SizeConstrained,
   SizeFull,
   SizeHeight,
   SizeMax,
   SizePercentage,
-  SizeConstrained,
   SizeWidth,
   SizeWidthAndHeight,
 } from "../../types.js";
@@ -13,7 +13,7 @@ import { isBadSize } from "./isBadSize.js";
 
 export function parseSize(data: string): Size | BadSize {
   const parseInteger = parseNumber(
-    (n) => parseInt(n, 10),
+    (n) => Number.parseInt(n, 10),
     data,
     1 /* minimum */,
   );
@@ -21,7 +21,7 @@ export function parseSize(data: string): Size | BadSize {
   // pct:n
   if (data.indexOf("pct:") === 0) {
     const percentage = parseNumber(
-      parseFloat,
+      Number.parseFloat,
       data,
       0 /* minimum */,
     )(data.substring(4));
@@ -134,7 +134,7 @@ function parseNumber(
   return (input) => {
     const n = parse(input);
 
-    if (isNaN(n)) {
+    if (Number.isNaN(n)) {
       return <BadSize>{
         tag: "badSize",
         value: data,
@@ -158,7 +158,7 @@ function parseTwoNumbers(
   data: string,
 ): BadSize | [x: number, y: number] {
   const ns = data.split(",");
-  if (ns.length != 2) {
+  if (ns.length !== 2) {
     return <BadSize>{
       tag: "badSize",
       value: data,

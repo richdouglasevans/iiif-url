@@ -12,7 +12,7 @@ export function parseRotation(data: string): Rotation | BadRotation {
 
   const degrees = Number.parseFloat(n);
 
-  if (isNaN(degrees)) {
+  if (Number.isNaN(degrees)) {
     return <BadRotation>{
       tag: "badRotation",
       value: data,
