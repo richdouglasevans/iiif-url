@@ -59,24 +59,26 @@ function serializeRegion(region: Region): string {
 }
 
 function serializeSize(size: Size): string {
+  const scaled = size.scaled ? '^' : '';
+
   switch (size.tag) {
     case "max":
-      return "max";
+      return `${scaled}max`;
 
     case "percentage":
-      return `pct:${size.percentage}`;
+      return `${scaled}pct:${size.percentage}`;
 
     case "width":
-      return `${size.w},`;
+      return `${scaled}${size.w},`;
 
     case "height":
-      return `,${size.h}`;
+      return `${scaled},${size.h}`;
 
     case "widthAndHeight":
-      return `${size.w},${size.h}`;
+      return `${scaled}${size.w},${size.h}`;
 
     case "constrained":
-      return `!${size.w},${size.h}`;
+      return `${scaled}!${size.w},${size.h}`;
 
     default:
       return ((_: never) => _)(size);

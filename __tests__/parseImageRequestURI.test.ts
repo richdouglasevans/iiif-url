@@ -306,8 +306,7 @@ describe("parse Image Request URI", () => {
 
         assert.deepStrictEqual(result, {
           tag: "imageRequest",
-          // check this
-          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/max/0/default.jpg",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/^max/0/default.jpg",
           scheme: "https",
           server: {
             host: "example.org",
@@ -378,8 +377,7 @@ describe("parse Image Request URI", () => {
 
         assert.deepStrictEqual(result, {
           tag: "imageRequest",
-          // check this
-          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/pct:44.5/0/default.jpg",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/^pct:44.5/0/default.jpg",
           scheme: "https",
           server: {
             host: "example.org",
@@ -451,8 +449,7 @@ describe("parse Image Request URI", () => {
 
         assert.deepStrictEqual(result, {
           tag: "imageRequest",
-          // check this
-          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/72,/0/default.jpg",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/^72,/0/default.jpg",
           scheme: "https",
           server: {
             host: "example.org",
@@ -524,8 +521,7 @@ describe("parse Image Request URI", () => {
 
         assert.deepStrictEqual(result, {
           tag: "imageRequest",
-          // check this
-          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/,283/0/default.jpg",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/^,283/0/default.jpg",
           scheme: "https",
           server: {
             host: "example.org",
@@ -598,8 +594,7 @@ describe("parse Image Request URI", () => {
 
         assert.deepStrictEqual(result, {
           tag: "imageRequest",
-          // check this
-          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/145,283/0/default.jpg",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/^145,283/0/default.jpg",
           scheme: "https",
           server: {
             host: "example.org",
@@ -673,8 +668,7 @@ describe("parse Image Request URI", () => {
 
         assert.deepStrictEqual(result, {
           tag: "imageRequest",
-          // check this
-          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/!12,34/0/default.jpg",
+          uri: "https://example.org/image-service/iiif/abcd1234/0,1,2,3/^!12,34/0/default.jpg",
           scheme: "https",
           server: {
             host: "example.org",
