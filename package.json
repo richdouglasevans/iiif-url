@@ -15,7 +15,9 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["./dist/**/*"],
+  "files": [
+    "./dist/**/*"
+  ],
   "engines": {
     "node": ">=18"
   },
@@ -27,15 +29,17 @@
     "format": "npx @biomejs/biome format --write ./lib",
     "lint": "npx @biomejs/biome lint --write ./lib"
   },
-  "keywords": ["iiif"],
+  "keywords": [
+    "iiif"
+  ],
   "author": "Rich Douglas",
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/node": "^22.9.0",
+    "@types/node": "^22.10.1",
     "cross-env": "^7.0.3",
     "tsup": "8.3.5",
     "tsx": "^4.19.2",
-    "typescript": "5.6.3"
+    "typescript": "^5.7.2"
   }
 }
