@@ -6,8 +6,8 @@ import type {
   Scheme,
 } from "../types.js";
 import {
-  type ParsedImageInformationRequest,
   isUnsupportedScheme,
+  type ParsedImageInformationRequest,
   parseScheme,
   parseServer,
 } from "./index.js";

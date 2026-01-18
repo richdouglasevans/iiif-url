@@ -8,8 +8,8 @@ import type {
   Scheme,
 } from "../../types.js";
 import {
-  type ParsedImageRequest,
   isUnsupportedScheme,
+  type ParsedImageRequest,
   parseScheme,
   parseServer,
 } from "../index.js";
@@ -44,8 +44,8 @@ export function parseImageRequest(url: URL): ImageRequest | ParseError {
     });
   }
 
-  let quality: Quality | undefined = undefined;
-  let format: Format | undefined = undefined;
+  let quality: Quality | undefined;
+  let format: Format | undefined;
 
   // biome-ignore lint/style/noNonNullAssertion: accounted for earlier
   const qf = parseQualityAndFormat(paths.pop()!);

@@ -10,7 +10,7 @@ export function parseURI(uri: string): ParseResult {
       return parseImageInformationRequestURI(url);
     }
     return parseImageRequest(url);
-  } catch (err) {
+  } catch {
     return <ParseError>{
       tag: "error",
       uri,
