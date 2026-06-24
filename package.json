@@ -21,9 +21,9 @@
     "build": " npm run check && npm run build:ts && npm run test",
     "build:ts": "tsc",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules node --import tsx --test __tests__/*.test.ts",
-    "check": "npx @biomejs/biome check --write ./lib",
-    "format": "npx @biomejs/biome format --write ./lib",
-    "lint": "npx @biomejs/biome lint --write ./lib"
+    "check": "biome check --write ./lib",
+    "format": "biome format --write ./lib",
+    "lint": "biome lint --write ./lib"
   },
   "keywords": [
     "iiif"
