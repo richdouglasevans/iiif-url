@@ -1,5 +1,5 @@
 import { parseImageInformationRequestURI } from "./internal/parseImageInformationRequestURI.js";
-import { parseImageRequest } from "./internal/parseImageRequest";
+import { parseImageRequest } from "./internal/parseImageRequest/index.js";
 import type { MalformedURI, ParseError, ParseResult } from "./types.js";
 
 export function parseURI(uri: string): ParseResult {

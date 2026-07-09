@@ -35,7 +35,7 @@
     "@types/node": "^24.13.2",
     "cross-env": "^10.1.0",
     "tsx": "^4.22.4",
-    "typescript": "^5.9.3"
+    "typescript": "^7.0.2"
   },
   "publishConfig": {
     "@richdouglasevans:registry": "https://npm.pkg.github.com"
