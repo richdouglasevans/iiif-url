@@ -6,7 +6,7 @@ import type {
   UnsupportedScheme,
 } from "../types.js";
 
-export { parseImageRequest } from "./parseImageRequest";
+export { parseImageRequest } from "./parseImageRequest/index.js";
 
 export function parseScheme(protocol: string): Scheme | UnsupportedScheme {
   switch (protocol) {
